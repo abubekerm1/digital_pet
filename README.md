@@ -26,23 +26,45 @@ pet messages, mood feedback, licensed pet assets, motion/accessibility polish, a
 
 
 
-# 4. Core Application Features
+Core Application Features---
 
-The Digital Pet application core behaviors:
+The Digital Pet app includes the following core behaviors:
 
-| Feature | Description |
-| **Pet Name** | The user can enter and confirm a pet name. |
-| **Happiness** | Happiness is displayed on a 0–100 scale. |
-| **Hunger** | Hunger is displayed on a 0–100 scale. |
-| **Feed** | Feeding decreases hunger and increases happiness. |
-| **Play** | Playing increases happiness and affects hunger. |
-| **Hunger Timer** | Hunger increases by 5 every 30 seconds. |
-| **Win Condition** | Happiness must remain above 80 continuously for 3 minutes. |
-| **Loss Condition** | Game Over occurs when hunger reaches 100 and happiness is 10 or lower. |
-| **Reset** | Reset restores the initial state and correctly restarts the care loop. |
-| **State Bounds** | Happiness and hunger remain between 0 and 100. |
-| **Mood Feedback** | The pet's mood is communicated through a readable label and visual feedback. |
-| **Timer Lifecycle** | Timers are canceled when they are no longer needed or when the widget is disposed. |
+## Pet Name
+The user can enter and confirm a pet name.
+
+## Happiness
+Happiness is displayed on a 0–100 scale.
+
+## Hunger
+Hunger is displayed on a 0–100 scale.
+
+## Feed
+Feeding decreases hunger and increases happiness.
+
+## Play
+Playing increases happiness and affects hunger.
+
+## Hunger Timer
+Hunger increases by 5 every 30 seconds.
+
+## Win Condition
+Happiness must remain above 80 continuously for 3 minutes.
+
+## Loss Condition
+Game Over occurs when hunger reaches 100 and happiness is 10 or lower.
+
+## Reset
+Reset restores the initial state and correctly restarts the care loop.
+
+## State Bounds
+Happiness and hunger remain between 0 and 100.
+
+## Mood Feedback
+The pet's mood is communicated through a readable label and visual feedback.
+
+## Timer Lifecycle
+Timers are canceled when they are no longer needed or when the widget is disposed.
 
 
 
