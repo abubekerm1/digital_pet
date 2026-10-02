@@ -1,91 +1,38 @@
-# digital_pet
+## Undergraduate Features
 
-A new Flutter project.
+| Feature | Learning outcome | Evidence |
+| --- | --- | --- |
+| Pause/resume | State controls timers and available actions. Pause cancels timers; resume begins a fresh win streak. | Paused controls checked on emulator. |
+| Visual polish | Mood size and message transitions derive from pet state. Reduced motion sets animation durations to zero. | Mood changes checked; reduced-motion device test pending. |
 
-## Getting Started
+## Commands
 
-This project is a starting point for a Flutter application.
+- Setup: `flutter pub get`
+- Run: `flutter run -d emulator-5554`
+- Analyze: `flutter analyze`
+- Test: `flutter test`
+- Release: `flutter build apk --release`
 
-A few resources to get you started if this is your first Flutter project:
+## Care Rules
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Feed lowers hunger by 10. Happiness increases by 10 unless resulting hunger is below 30, when happiness decreases by 20. Play increases happiness by 15 and hunger by 10. All meters are clamped to 0–100.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Recorded Checks
 
+The analyzer and Feed → Play → Reset test passed. We checked care actions, reset, unhappy mood, and pause controls on the emulator. The three-minute win appeared, and hunger stopped afterward. Loss was tested with a temporary one-second hunger timer. We restored hunger timing to 30 seconds and confirmed the three-minute win duration.
 
-Roles---
-Team 1: Jalen Artis - Care Systems 
-Feed, play, reset, bounded meters, hunger timer, win/loss logic, state-boundary testing.
+## Screenshots
 
-Team 2: Abubeker Mohammed - Pet Personality
-pet messages, mood feedback, licensed pet assets, motion/accessibility polish, and interaction tests.
+![Win](docs/win.png)
+![Unhappy](docs/unhappy.png)
+![Loss](docs/loss.png)
 
+## Contributions and Review
 
+Jalen Artis shared the initial care code and reviewed PR #1. Abubeker Mohammed added pet personality and completed the care integration. The care-completion PR was merged without a second cross-team review.
 
-Core Application Features---
+Pet personality PR: https://github.com/abubekerm1/digital_pet/pull/1
 
-The Digital Pet app includes the following core behaviors:
+## Unverified Items
 
-## Pet Name
-The user can enter and confirm a pet name.
-
-## Happiness
-Happiness is displayed on a 0–100 scale.
-
-## Hunger
-Hunger is displayed on a 0–100 scale.
-
-## Feed
-Feeding decreases hunger and increases happiness.
-
-## Play
-Playing increases happiness and affects hunger.
-
-## Hunger Timer
-Hunger increases by 5 every 30 seconds.
-
-## Win Condition
-Happiness must remain above 80 continuously for 3 minutes.
-
-## Loss Condition
-Game Over occurs when hunger reaches 100 and happiness is 10 or lower.
-
-## Reset
-Reset restores the initial state and correctly restarts the care loop.
-
-## State Bounds
-Happiness and hunger remain between 0 and 100.
-
-## Mood Feedback
-The pet's mood is communicated through a readable label and visual feedback.
-
-## Timer Lifecycle
-Timers are canceled when they are no longer needed or when the widget is disposed.
-
-
-
-Design Notes---
-
-The application employs Flutter's StatefulWidget and State architecture.
-The State object contains the modifiable pet values, but the widget configuration is unchangeable.
-State changes utilize setState() so Flutter can rebuild the UI using the changed pet values.
-When a timer is no longer required or the widget is disposed of, it is canceled. Timers are generated during the widget lifespan.
-
-
-Image---
-
-Pet Asset
-Asset: Perry the Platypus PNG
-**Source:** The United Organization Toons Heroes Wiki (Fandom)
-- **Source page:** https://theunitedorganizationtoonsheroes.fandom.com/wiki/Perry_the_Platypus
-- **License type:** Copyrighted / non-free image
-- **Copyright:** Perry the Platypus and related *Phineas and Ferb* characters are owned by their respective copyright holders.
-- **Usage:** Used as a pet image in this educational, non-commercial Flutter course project.
-- **Attribution:** Image sourced from The United Organization Toons Heroes Wiki on Fandom.
-- **License note:** The Fandom wiki's general CC-BY-SA license does not automatically apply to uploaded images. The image is therefore not being represented as CC-BY-SA, public domain, or otherwise freely licensed.
-Usage: Used as the pet image in the Digital Pet application.
-
+Full boundary-matrix testing, reduced-motion device testing, landscape testing, and release installation are not yet recorded. Image reuse permission is unverified, and the colored image makes the neutral yellow tint appear green.
