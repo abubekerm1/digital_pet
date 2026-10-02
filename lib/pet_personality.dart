@@ -30,8 +30,11 @@ class PetPersonality extends StatelessWidget {
     return 'Unhappy';
   }
 
-  double get _petScale =>
-      happiness > 70 ? 1.06 : happiness < 30 ? 0.94 : 1.0;
+  double get _petScale => happiness > 70
+      ? 1.06
+      : happiness < 30
+      ? 0.94
+      : 1.0;
 
   Color get _moodColor {
     if (happiness > 70) return Colors.green;
@@ -46,10 +49,7 @@ class PetPersonality extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          petName,
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
+        Text(petName, style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(height: 12),
         Semantics(
           label: '$petName, mood: $_moodLabel',
@@ -62,10 +62,7 @@ class PetPersonality extends StatelessWidget {
                   : const Duration(milliseconds: 180),
               curve: Curves.easeOutBack,
               child: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                  _moodColor,
-                  BlendMode.modulate,
-                ),
+                colorFilter: ColorFilter.mode(_moodColor, BlendMode.modulate),
                 child: Image.asset(
                   'assets/pet.png',
                   width: 160,

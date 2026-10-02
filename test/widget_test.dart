@@ -1,30 +1,36 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:digital_pet/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Care actions update meters and reset restores them',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const SmileyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('Happiness: 50 / 100'), findsOneWidget);
+    expect(find.text('Hunger: 50 / 100'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    await tester.ensureVisible(find.text('Feed'));
+    await tester.tap(find.text('Feed'));
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Happiness: 60 / 100'), findsOneWidget);
+    expect(find.text('Hunger: 40 / 100'), findsOneWidget);
+
+    await tester.ensureVisible(find.text('Play'));
+    await tester.tap(find.text('Play'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Happiness: 75 / 100'), findsOneWidget);
+    expect(find.text('Hunger: 50 / 100'), findsOneWidget);
+
+    await tester.ensureVisible(find.text('Reset / Restart'));
+    await tester.tap(find.text('Reset / Restart'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Happiness: 50 / 100'), findsOneWidget);
+    expect(find.text('Hunger: 50 / 100'), findsOneWidget);
+
+    await tester.pumpWidget(const SizedBox.shrink());
   });
 }
